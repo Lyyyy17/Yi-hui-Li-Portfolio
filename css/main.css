@@ -214,13 +214,51 @@ body {
 .cta-button-secondary { border: 2px solid #1a73e8; color: #1a73e8; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; }
 
 /* 響應式 */
+/* --- 手機版與平板優化 (螢幕小於 850px 時觸發) --- */
 @media (max-width: 850px) {
-    .card-featured {
-        flex-direction: column; 
-        max-height: none;
+    /* 1. 讓容器邊距縮小，增加空間 */
+    .container {
+        padding: 0 20px;
     }
-    .card-featured .card-image {
-        aspect-ratio: 16 / 9; /* 回復標準比例 */
+
+    /* 2. 讓 Grid 變回單欄，不要強行雙欄 */
+    .project-grid {
+        grid-template-columns: 1fr !important; 
+        gap: 30px;
+    }
+
+    /* 3. 讓 E-lab 橫向卡片恢復為垂直排列 */
+    .card-featured {
+        flex-direction: column !important;
+        max-height: none !important;
+    }
+
+    .card-featured .card-image, 
+    .card-featured .card-content {
+        flex: none;
+        width: 100%;
+    }
+
+    /* 4. 讓圖片比例固定，不要被壓縮 */
+    .card-image {
+        aspect-ratio: 16 / 9;
+        height: auto;
+    }
+
+    /* 5. 縮小標題字體，避免文字撐開卡片 */
+    .hero-centered h1 {
+        font-size: 2.2rem;
+    }
+    
+    .card h3 {
+        font-size: 1.4rem;
+        height: auto; /* 手機版讓標題高度自動 */
+    }
+
+    /* 6. 調整 Footer 變為單欄 */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
 }
 
