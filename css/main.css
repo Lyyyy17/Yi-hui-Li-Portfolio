@@ -1,0 +1,335 @@
+/* --- 基礎與置中設定 --- */
+:root {
+    --bg-color: #1f2733e1;       /* 極深藍底 */
+    --card-bg: #112240;        /* 較淺的藍色卡片 */
+    --text-main: #c5d1e1;      /* 近乎白的文字 */
+    --text-dim: #8892b0;       /* 灰藍色文字 */
+    --accent-yellow: #fbff8f;    /* 亮色亮點（類似湖水綠或亮藍） */
+    --primary-blue: #1a73e8;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.container {
+    max-width: 1300px; /* 增加整體容器寬度 */
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.hero-centered {
+    text-align: center;
+    padding: 140px 0 60px; 
+}
+
+.hero-centered h1 {
+    font-size: 3.5rem; 
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1.5px;
+}
+
+/* --- 卡片設計 (大尺寸版面) --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px;
+    margin-top: 20px;/* 關鍵：調大整體寬度，卡片自然會變寬 */
+    max-width: 1200px; 
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 讓 E-lab 橫跨兩欄 */
+.card-featured {
+    grid-column: 1 / -1;       /* 橫跨雙欄 */
+    display: flex !important;  /* 強制開啟 Flex 佈局 */
+    flex-direction: row;       /* 關鍵：改為左右排列 */
+    align-items: stretch;      /* 讓圖片與文字等高 */
+    min-height: 380px;         /* 限制最大高度，防止變太寬 */
+    max-height: 600px;
+    overflow: hidden;
+}
+
+/* 調整 E-lab 的圖片比例 */
+.card-featured .card-image {
+    flex: 1.2; /* 圖片佔左側較多空間 */
+    height: 100%;
+}
+
+.card-featured .card-content {
+    flex: 1;                   /* 文字佔右側約 45% */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* 文字垂直居中 */
+    padding: 40px 50px;        /* 增加左右內距，讓它更像 Banner */
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    overflow: hidden; /* 確保圖片圓角 */
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: var(--accent-yellow);
+}
+
+/* 圖片置中設定 */
+.card-image {
+    width: 100%;
+    /* 關鍵：強制設定比例（例如 16:9 或 3:2） */
+    aspect-ratio: 16 / 9; 
+    background-color: #1a2a4a; /* 圖片載入前的底色 */
+    overflow: hidden; /* 確保超出部分被隱藏 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%; /* 關鍵：像手機桌布一樣裁切填滿，不縮放變形 */
+    object-fit: cover; 
+    display: block;
+}
+
+.card-content {
+    padding: 35px; /* 增加內距，讓視覺感變大 */
+    text-align: left;
+}
+
+/* 顏色整理：統一使用變數 */
+.card h3 {
+    font-size: 1.6rem; /* 稍微放大標題 */
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+.project-meta {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-yellow); /* 改用亮色強調 card-label */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 技能標籤樣式 (Tag) */
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.skill-tag {
+    background: rgba(26, 115, 232, 0.15);
+    color: #4da3ff;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(26, 115, 232, 0.3);
+}
+
+.view-more {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+
+.view-more:hover {
+    color: var(--accent-yellow);
+    text-decoration: underline;
+}
+
+
+/* --- 分隔線與標題 --- */
+.section-divider {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 60px 0;
+}
+
+.category-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    font-weight: 800;
+}
+
+/* --- Footer 排版 --- */
+.main-footer {
+    background-color:var(--bg-color);
+    padding: 80px 5%;
+    margin-top: 100px;
+}
+
+.footer-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+}
+
+.footer-item h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.footer-link {
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.location-tag {
+    display: block;
+    font-size: 0.85rem;
+    color: #1a73e8;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+/* --- 按鈕 --- */
+.cta-button { background: #1a73e8; color: #0a192f; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; }
+.cta-button-secondary { border: 2px solid #1a73e8; color: #1a73e8; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; }
+
+/* 響應式 */
+@media (max-width: 850px) {
+    .card-featured {
+        flex-direction: column; 
+        max-height: none;
+    }
+    .card-featured .card-image {
+        aspect-ratio: 16 / 9; /* 回復標準比例 */
+    }
+}
+
+/* --- 內頁專用樣式 --- */
+
+/* 1. 頁首導覽列 */
+.nav-header {
+    background-color: var(--bg-color); /* 較深的顏色 */
+    border-bottom: 1px solid #233554;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.nav-content {
+    max-width: 1200px; /* 與上面的容器寬度一致 */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.view-btn {
+    background: transparent;
+    border: 1px solid var(--accent-blue, #64ffda);
+    color: var(--accent-blue, #64ffda);
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+.view-btn:hover {
+    background: rgba(100, 255, 218, 0.1);
+}
+
+/* 2. 容器與卡片設計 */
+.project-detail-container {
+    padding-top: 100px;
+    max-width: 1200px; /* 從 900px 改為 1200px，卡片就會變寬 */
+    margin: 0 auto;
+    padding-left: 20px;  /* 增加左右間距，避免手機版貼邊 */
+    padding-right: 20px;
+}
+.project-card {
+    background:var(--card-bg); /* 深色卡片底色 */
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 30px;
+    border: 1px solid #233554;
+    box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+}
+
+.project-card h2 {
+    color: var(--text-main);
+    margin-top: 0;
+}
+
+/* 3. PDF 卡片特化 */
+.pdf-card {
+    padding: 0; /* 移除內距讓 header 貼齊 */
+    overflow: hidden;
+}
+.card-header {
+    background: var(--card-bg);
+    padding: 16px 20px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+.pdf-wrapper {
+    width: 100%;
+    height: 120vh;
+    background: #1a2a4a; /* 可以給 PDF 後方一個稍微不同的深色，增加層次感 */
+    
+    /* 關鍵：加入 padding 讓 PDF 縮小 */
+    padding: 20px;       /* 上下左右都縮進 20px */
+    box-sizing: border-box; /* 確保 padding 不會撐大整個容器寬度 */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pdf-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px; /* 讓內層 PDF 的轉角也有一點圓弧，更好看 */
+    border: none;
+}
+
+/* 4. 精簡頁尾 */
+.minimal-footer {
+    text-align: center;
+    padding: 70px 0;
+    background: transparent;
+}
+.minimal-footer p {
+    font-size: 0.8rem;
+    color: var(--text-main);
+    margin: 0;
+}
+
+/* 5. 原有 back-link 微調 */
+.back-link {
+    color: #ccd6f6;
+    text-decoration: none;
+    font-weight: 400;
+}
+.back-link:hover {
+    color: var(--accent-blue, #64ffda);
+}
