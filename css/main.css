@@ -213,52 +213,40 @@ body {
 .cta-button { background: #1a73e8; color: #0a192f; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; }
 .cta-button-secondary { border: 2px solid #1a73e8; color: #1a73e8; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; }
 
-/* 響應式 */
-/* --- 手機版與平板優化 (螢幕小於 850px 時觸發) --- */
-@media (max-width: 850px) {
-    /* 1. 讓容器邊距縮小，增加空間 */
-    .container {
-        padding: 0 20px;
-    }
-
-    /* 2. 讓 Grid 變回單欄，不要強行雙欄 */
+/* 當螢幕寬度小於 768px（手機與小平板）時執行 */
+@media screen and (max-width: 768px) {
+    
+    /* 1. 強制讓 Grid 變成單欄 */
     .project-grid {
-        grid-template-columns: 1fr !important; 
-        gap: 30px;
+        grid-template-columns: 1fr !important; /* 1fr 代表佔滿整排 */
+        gap: 25px !important;
+        width: 100% !important;
+        padding: 0 !important;
     }
 
-    /* 3. 讓 E-lab 橫向卡片恢復為垂直排列 */
+    /* 2. 讓 E-lab 橫向卡片恢復為垂直排列（上圖下文） */
     .card-featured {
         flex-direction: column !important;
+        height: auto !important;
         max-height: none !important;
     }
 
-    .card-featured .card-image, 
-    .card-featured .card-content {
-        flex: none;
-        width: 100%;
-    }
-
-    /* 4. 讓圖片比例固定，不要被壓縮 */
+    /* 3. 確保圖片在手機上不會縮小，維持 16:9 比例 */
     .card-image {
-        aspect-ratio: 16 / 9;
-        height: auto;
+        width: 100% !important;
+        aspect-ratio: 16 / 9 !important;
+        height: auto !important;
     }
 
-    /* 5. 縮小標題字體，避免文字撐開卡片 */
-    .hero-centered h1 {
-        font-size: 2.2rem;
+    /* 4. 調整卡片文字間距，不要太擠 */
+    .card-content {
+        padding: 25px 20px !important;
     }
-    
+
+    /* 5. 標題縮小一點，避免在小螢幕上換行太誇張 */
     .card h3 {
-        font-size: 1.4rem;
-        height: auto; /* 手機版讓標題高度自動 */
-    }
-
-    /* 6. 調整 Footer 變為單欄 */
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        font-size: 1.3rem !important;
+        height: auto !important; /* 讓標題高度自動增長 */
     }
 }
 
