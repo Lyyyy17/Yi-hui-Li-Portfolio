@@ -22,6 +22,27 @@ body {
     padding: 0 40px;
 }
 
+/* --- 電腦版 Hero 區塊補充定義 --- */
+.hero-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent-yellow); /* 給副標題一點顏色，會更有層次 */
+    margin-bottom: 1rem;
+}
+
+.hero-tagline {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 2rem; /* 置中並給下方按鈕留白 */
+    color: var(--text-dim);
+}
+
+.hero-btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* 電腦版按鈕間距可以寬一點 */
+}
+
 .hero-centered {
     text-align: center;
     padding: 140px 0 60px; 
@@ -213,76 +234,6 @@ body {
 .cta-button { background: #1a73e8; color: #0a192f; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; }
 .cta-button-secondary { border: 2px solid #1a73e8; color: #1a73e8; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; }
 
-/* 當螢幕寬度小於 768px（手機與小平板）時執行 */
-@media screen and (max-width: 768px) {
-    
-    /* 1. 強制讓 Grid 變成單欄 */
-    .project-grid {
-        grid-template-columns: 1fr !important; /* 1fr 代表佔滿整排 */
-        gap: 25px !important;
-        width: 100% !important;
-        padding: 0 !important;
-    }
-
-    /* 2. 讓 E-lab 橫向卡片恢復為垂直排列（上圖下文） */
-    .card-featured {
-        flex-direction: column !important;
-        height: auto !important;
-        max-height: none !important;
-    }
-
-    /* 3. 確保圖片在手機上不會縮小，維持 16:9 比例 */
-    .card-image {
-        width: 100% !important;
-        aspect-ratio: 16 / 9 !important;
-        height: auto !important;
-    }
-
-    /* 4. 調整卡片文字間距，不要太擠 */
-    .card-content {
-        padding: 25px 20px !important;
-    }
-
-    /* 5. 標題縮小一點，避免在小螢幕上換行太誇張 */
-    .card h3 {
-        font-size: 1.3rem !important;
-        height: auto !important; /* 讓標題高度自動增長 */
-    /* 1. 調整 Hero 區塊間距 */
-    .hero-centered {
-        padding: 80px 0 40px; /* 縮小上下間距，讓內容往上提 */
-    }
-
-    /* 6. 名字縮小並保持在同一行 */
-    .hero-centered h1 {
-        font-size: 1.8rem !important; /* 大幅縮小字體以適應手機寬度 */
-        white-space: nowrap;          /* 強制不換行 */
-        letter-spacing: -0.5px;       /* 縮小字距 */
-    }
-
-    /* 7. 調整副標題大小 */
-    .hero-title {
-        font-size: 1rem !important;
-    }
-
-    /* 8. 按鈕改為同一行併排 */
-    .hero-btns {
-        display: flex !important;
-        flex-direction: row !important; /* 強制橫向排列 */
-        justify-content: center;
-        gap: 10px;                     /* 縮小按鈕間距 */
-        margin-top: 20px;
-    }
-
-    /* 9. 縮小按鈕內的文字與內距 */
-    .cta-button, .cta-button-secondary {
-        padding: 10px 15px !important; /* 縮小按鈕大小 */
-        font-size: 0.85rem !important;  /* 縮小按鈕文字 */
-        flex: 1;                       /* 讓兩個按鈕等寬 */
-        max-width: 150px;              /* 限制按鈕最大寬度避免太扁 */
-        white-space: nowrap;           /* 按鈕文字也不要換行 */
-    }
-}
-
 /* --- 內頁專用樣式 --- */
 
 /* 1. 頁首導覽列 */
@@ -391,4 +342,77 @@ body {
 }
 .back-link:hover {
     color: var(--accent-blue, #64ffda);
+}
+
+/* 當螢幕寬度小於 768px（手機與小平板）時執行 */
+@media screen and (max-width: 768px) {
+    
+    /* 1. 調整 Hero 區塊間距與標題 */
+    .hero-centered {
+        padding: 60px 20px 30px !important; /* 縮小上下距 */
+    }
+
+    .hero-centered h1 {
+        font-size: 1.8rem !important; /* 確保縮小，1.8rem 通常可讓全名在一行內 */
+        white-space: nowrap;          /* 強制不換行 */
+        letter-spacing: -1px !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* 2. 定義 hero-title 與 hero-tagline (原本你沒寫到) */
+    .hero-title {
+        font-size: 1rem !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .hero-tagline {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+
+    /* 3. 按鈕併排設定 */
+    .hero-btns {
+        display: flex !important;
+        flex-direction: row !important; /* 強制橫向 */
+        justify-content: center !important;
+        gap: 8px !important;
+        margin-top: 25px !important;
+    }
+
+    .cta-button, .cta-button-secondary {
+        padding: 12px 10px !important; /* 縮小內距 */
+        font-size: 0.8rem !important;   /* 縮小字體 */
+        flex: 1 !important;            /* 等寬 */
+        max-width: 140px !important;   /* 限制寬度 */
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+    /* 4. 專案網格與卡片 */
+    .project-grid {
+        grid-template-columns: 1fr !important; 
+        gap: 25px !important;
+        width: 100% !important;
+    }
+
+    .card-featured {
+        flex-direction: column !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+
+    .card-image {
+        width: 100% !important;
+        aspect-ratio: 16 / 9 !important;
+        height: auto !important;
+    }
+
+    .card-content {
+        padding: 25px 20px !important;
+    }
+
+    .card h3 {
+        font-size: 1.3rem !important;
+        height: auto !important;
+    }
 }
