@@ -247,6 +247,39 @@ body {
     .card h3 {
         font-size: 1.3rem !important;
         height: auto !important; /* 讓標題高度自動增長 */
+    /* 1. 調整 Hero 區塊間距 */
+    .hero-centered {
+        padding: 80px 0 40px; /* 縮小上下間距，讓內容往上提 */
+    }
+
+    /* 6. 名字縮小並保持在同一行 */
+    .hero-centered h1 {
+        font-size: 1.8rem !important; /* 大幅縮小字體以適應手機寬度 */
+        white-space: nowrap;          /* 強制不換行 */
+        letter-spacing: -0.5px;       /* 縮小字距 */
+    }
+
+    /* 7. 調整副標題大小 */
+    .hero-title {
+        font-size: 1rem !important;
+    }
+
+    /* 8. 按鈕改為同一行併排 */
+    .hero-btns {
+        display: flex !important;
+        flex-direction: row !important; /* 強制橫向排列 */
+        justify-content: center;
+        gap: 10px;                     /* 縮小按鈕間距 */
+        margin-top: 20px;
+    }
+
+    /* 9. 縮小按鈕內的文字與內距 */
+    .cta-button, .cta-button-secondary {
+        padding: 10px 15px !important; /* 縮小按鈕大小 */
+        font-size: 0.85rem !important;  /* 縮小按鈕文字 */
+        flex: 1;                       /* 讓兩個按鈕等寬 */
+        max-width: 150px;              /* 限制按鈕最大寬度避免太扁 */
+        white-space: nowrap;           /* 按鈕文字也不要換行 */
     }
 }
 
