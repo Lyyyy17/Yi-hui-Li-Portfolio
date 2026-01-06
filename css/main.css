@@ -285,6 +285,55 @@ body {
     box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
 }
 
+/* ig,fb圖示 */
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-btn {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.social-btn.ig {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+}
+
+.social-btn.fb {
+    background-color: #1877F2;
+    color: white;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+/* 專門給長圖使用的容器 */
+.tall-image-container {
+    width: 100%;
+    max-width: 800px; /* 限制寬度，避免在電腦版過大 */
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.tall-image-container img {
+    width: 100%;
+    height: auto; /* 讓高度隨比例自動縮放，不裁切 */
+    display: block;
+}
+
+
 .project-card h2 {
     color: var(--text-main);
     margin-top: 0;
@@ -344,75 +393,48 @@ body {
     color: var(--accent-blue, #64ffda);
 }
 
-/* 當螢幕寬度小於 768px（手機與小平板）時執行 */
+/* --- 手機版優化 (max-width: 768px) --- */
 @media screen and (max-width: 768px) {
-    
-    /* 1. 調整 Hero 區塊間距與標題 */
-    .hero-centered {
-        padding: 60px 20px 30px !important; /* 縮小上下距 */
-    }
+    .hero-centered { padding: 60px 20px 30px !important; }
 
     .hero-centered h1 {
-        font-size: 1.8rem !important; /* 確保縮小，1.8rem 通常可讓全名在一行內 */
-        white-space: nowrap;          /* 強制不換行 */
+        font-size: 1.8rem !important;
+        white-space: nowrap !important;
         letter-spacing: -1px !important;
-        margin-bottom: 10px !important;
     }
 
-    /* 2. 定義 hero-title 與 hero-tagline (原本你沒寫到) */
-    .hero-title {
-        font-size: 1rem !important;
-        margin-bottom: 8px !important;
-    }
-    
-    .hero-tagline {
-        font-size: 0.9rem !important;
-        line-height: 1.4 !important;
-    }
-
-    /* 3. 按鈕併排設定 */
     .hero-btns {
         display: flex !important;
-        flex-direction: row !important; /* 強制橫向 */
+        flex-direction: row !important;
         justify-content: center !important;
         gap: 8px !important;
-        margin-top: 25px !important;
     }
 
     .cta-button, .cta-button-secondary {
-        padding: 12px 10px !important; /* 縮小內距 */
-        font-size: 0.8rem !important;   /* 縮小字體 */
-        flex: 1 !important;            /* 等寬 */
-        max-width: 140px !important;   /* 限制寬度 */
+        padding: 12px 10px !important;
+        font-size: 0.8rem !important;
+        flex: 1 !important;
+        max-width: 140px !important;
         text-align: center !important;
-        white-space: nowrap !important;
     }
 
-    /* 4. 專案網格與卡片 */
     .project-grid {
-        grid-template-columns: 1fr !important; 
+        grid-template-columns: 1fr !important;
         gap: 25px !important;
-        width: 100% !important;
     }
 
     .card-featured {
         flex-direction: column !important;
-        height: auto !important;
         max-height: none !important;
     }
 
     .card-image {
-        width: 100% !important;
         aspect-ratio: 16 / 9 !important;
         height: auto !important;
     }
-
-    .card-content {
-        padding: 25px 20px !important;
+    
+    .social-links {
+        width: 100%;
+        justify-content: flex-start;
     }
-
-    .card h3 {
-        font-size: 1.3rem !important;
-        height: auto !important;
-    }
-}
+} /* <--- 確保這個大括號存在，它是結束 @media 的 */
