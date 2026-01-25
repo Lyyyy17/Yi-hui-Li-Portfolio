@@ -1,11 +1,15 @@
 /* --- 基礎與置中設定 --- */
 :root {
-    --bg-color: #1f2733e1;       /* 極深藍底 */
-    --card-bg: #112240;        /* 較淺的藍色卡片 */
-    --text-main: #c5d1e1;      /* 近乎白的文字 */
-    --text-dim: #8892b0;       /* 灰藍色文字 */
-    --accent-yellow: #fbff8f;    /* 亮色亮點（類似湖水綠或亮藍） */
-    --primary-blue: #1a73e8;
+    --bg-color: #05070a;       /* 更深、近乎純黑的靛藍，讓卡片浮出來 */
+    --card-bg: #111827;        /* 明確的深灰色卡片，不帶過多透明度，質感較重 */
+    --text-main: #ffffff;      /* 純白標題，增加衝擊力 */
+    --text-dim: #9ca3af;       /* 灰文字，與主標題拉開層次 */
+    
+    --accent-purple: #a78bfa;  /* 稍微加亮、偏粉一點的紫色，更吸睛 */
+    --accent-blue: #60a5fa;    /* 柔和的藍 */
+    --accent-cream: #e5e7eb;   
+    
+    --border-color: rgba(255, 255, 255, 0.08); /* 極淡的白邊，創造精緻感 */
 }
 
 body {
@@ -23,36 +27,52 @@ body {
 }
 
 /* --- 電腦版 Hero 區塊補充定義 --- */
-.hero-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--accent-yellow); /* 給副標題一點顏色，會更有層次 */
-    margin-bottom: 1rem;
+/* Hero 區域整體置中 */
+.hero-section {
+    text-align: center;
+    padding: 80px 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.hero-tagline {
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    font-weight: 800;
+}
+
+/* 自我介紹卡片樣式 */
+.intro-card {
+    background: rgba(255, 255, 255, 0.03); /* 半透明底色，可依背景色調整 */
+    backdrop-filter: blur(10px);          /* 毛玻璃效果，提升高級感 */
+    border: 1px solid rgba(100, 255, 218, 0.1); /* 與你 card 相同的邊框顏色 */
+    border-radius: 16px;                  /* 與你 card 相同的圓角 */
+    max-width: 800px;                     /* 限制寬度，避免文字過於扁平 */
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+}
+
+/* 讓這張卡片在 hover 時也有細微反應 */
+.intro-card:hover {
+    border-color: var(--accent-purple);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.intro-card .card-content {
+    padding: 40px;                        /* 充足的內距讓文字有呼吸空間 */
+    line-height: 1.8;                     /* 增加行高，提升易讀性 */
     font-size: 1.1rem;
-    max-width: 700px;
-    margin: 0 auto 2rem; /* 置中並給下方按鈕留白 */
     color: var(--text-dim);
+    text-align: center;                   /* 文字置中 */
 }
 
+/* 確保按鈕在卡片下方有足夠間距 */
 .hero-btns {
     display: flex;
+    gap: 20px;
     justify-content: center;
-    gap: 20px; /* 電腦版按鈕間距可以寬一點 */
-}
-
-.hero-centered {
-    text-align: center;
-    padding: 140px 0 60px; 
-}
-
-.hero-centered h1 {
-    font-size: 3.5rem; 
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    letter-spacing: -1.5px;
+    background: rgba(255, 255, 255, 0.03)
 }
 
 /* --- 卡片設計 (大尺寸版面) --- */
@@ -104,8 +124,8 @@ body {
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    border-color: var(--accent-yellow);
+    box-shadow: 0 0 30px rgb(146, 130, 194); 
+    border-color: var(--accent-purple);
 }
 
 /* 圖片置中設定 */
@@ -142,7 +162,7 @@ body {
 .project-meta {
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--accent-yellow); /* 改用亮色強調 card-label */
+    color: var(--accent-purple); 
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -175,7 +195,7 @@ body {
 }
 
 .view-more:hover {
-    color: var(--accent-yellow);
+    color: var(--accent-cream);
     text-decoration: underline;
 }
 
